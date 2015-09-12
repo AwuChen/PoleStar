@@ -29,11 +29,18 @@ public class Plane_Movement : MonoBehaviour {
 		//speed increase or decrease  
 		 
 		if (Input.GetKey (KeyCode.W)) {
-			transform.position += transform.forward * speed * Time.deltaTime;
+			transform.position += transform.forward * Time.deltaTime * 10.0f * speed;
 		}
 		if (Input.GetKey (KeyCode.S)) {
-			transform.position -= transform.forward * speed * Time.deltaTime;
+			transform.position -= transform.forward * Time.deltaTime * 0.50f * speed;
 		}
+		//stop completely 
+		if (Input.GetKey (KeyCode.X)) {
+			speed = speed * Time.deltaTime / 1.0f;
+		}
+
+
+
 		//terrain deterrance 
 		float terrainHeightWhereWeAre = Terrain.activeTerrain.SampleHeight (transform.position );
 
