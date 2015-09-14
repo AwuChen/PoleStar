@@ -16,7 +16,7 @@ public class ElevatorMovement : MonoBehaviour {
 			transform.position += transform.up * Time.deltaTime * 10.0f;
 		}
 		//elevator moves down 
-		if (Input.GetKey (KeyCode.Alpha2)) {
+		if (Input.GetKey (KeyCode.Alpha3)) {
 			transform.position -= transform.up * Time.deltaTime * 5.0f;
 		}
 
