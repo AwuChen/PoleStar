@@ -4,36 +4,38 @@ using System.Collections;
 public class Elevator : MonoBehaviour {
 
 	 
-	public GameObject directionObj; 
-	public float x,y,z; 
+	public Transform F1,F2,F3; 
 	
-	
+
 	// Use this for initialization
 	void Start () {
-		
+		//Debug.Log ("elevator movement script added to: " + gameObject.name);
 	}
 	
 	// Update is called once per frame
-	void Update () {				
-		      
+	void Update () {
+		//elevator moves up 
+		
+
 	}
-
-	void moveUp() 
+	
+	void OnTriggerStay(Collider other) 
 	{ 
-		transform.position += new Vector3(0,4,0); 
-	}
-
-
-
-	void OnTriggerEnter(Collider other) 
-	{ 
-		if(Input.GetKeyDown(KeyCode.Alpha1))
-		{ 
-			print("one"); 
-			moveUp (); 
+		if (Input.GetKey (KeyCode.Alpha1)) {
+			transform.position = Vector3.MoveTowards(transform.position, F1.position, Time.deltaTime*10F);
+			//transform.position += transform.up * Time.deltaTime * 10.0f;
 		}
-		print("one"); 
-		moveUp (); 
-
+		
+		if (Input.GetKey (KeyCode.Alpha2)) {
+			transform.position = Vector3.MoveTowards(transform.position, F2.position, Time.deltaTime);
+			//transform.position -= transform.up * Time.deltaTime * 5.0f;
+		}
+		//elevator moves down 
+		if (Input.GetKey (KeyCode.Alpha3)) {
+			transform.position = Vector3.MoveTowards(transform.position, F3.position, Time.deltaTime);
+			//transform.position -= transform.up * Time.deltaTime * 5.0f;
+		}
 	}
+
+
 }
